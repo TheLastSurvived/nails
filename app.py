@@ -289,23 +289,24 @@ def delete_gal(id):
 def payment(id):
     if not 'name' in session:
         return redirect('/auth')
-    today = datetime.now()
-    date = request.form.get('date')
-    time = request.form.get('time')
-    full = date + "-" + time
-    result = (today - datetime.strptime(date, '%Y-%m-%d')).total_seconds()
-    print(result)
-    if result>0:
-        flash("Дата ("+full+") выбрана неправильно, так как этот день уже прошел!", category="bad")
+    try:
+        today = datetime.now()
+        date = request.form.get('date')
+        time = request.form.get('time')
+        full = date + "-" + time
+        result = (today - datetime.strptime(date, '%Y-%m-%d')).total_seconds()
+        if result>0:
+            flash("Дата ("+full+") выбрана неправильно, так как этот день уже прошел!", category="bad")
+            return redirect(url_for("pricing"))
+        datetime_object = datetime.strptime(full, '%Y-%m-%d-%H:%M')
+        id_user = User.query.filter_by(email=session['name']).first().id
+        order = Orders(id_prices = id, id_users = id_user,date=datetime_object)
+        db.session.add(order)
+        db.session.commit()
+    except:
+        flash("Запись на это время невозможна!", category="bad")
+        db.session.rollback()
         return redirect(url_for("pricing"))
-
-
-    
-    datetime_object = datetime.strptime(full, '%Y-%m-%d-%H:%M')
-    id_user = User.query.filter_by(email=session['name']).first().id
-    order = Orders(id_prices = id, id_users = id_user,date=datetime_object)
-    db.session.add(order)
-    db.session.commit()
     return redirect('/pricing')    
 
 
