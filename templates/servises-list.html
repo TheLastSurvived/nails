@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block title %}
+Мои записи
+{% endblock %}
+
+{% block main %} 
+<div class="back_re">
+    <div class="container">
+       <div class="row">
+          <div class="col-md-12">
+             <div class="title">
+                 <h2>Мои заказы</h2>
+             </div>
+          </div>
+       </div>
+    </div>
+ </div>
+ <div class="container py-5">
+  
+    <table class="table">
+       <thead>
+         <tr>
+           <th scope="col">#</th>
+           <th scope="col">Услуга</th>
+           <th scope="col">Цена, руб</th>
+           <th scope="col">Дата и время</th>
+         </tr>
+       </thead>
+       <tbody>
+        {% if order_prices_list and  order_user%}
+          {%for el,el2 in zip( order_prices_list, order_user)%}
+         <tr>
+           <td></td>
+           <td>{{el.title}}</td>
+           <td>{{el.price}}</td>
+           <td>{{el2.date}}</td>
+         </tr>
+         {%endfor%}
+         {%else%}
+            <h2 class="text-center">Записей еще нет!</h2>
+         {%endif%}
+       </tbody>
+     </table>
+ </div>
+
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block title %}
+{{article.title}}
+{% endblock %}
+
+{% block main %} 
+<div class="back_re">
+    <div class="container">
+       <div class="row">
+          <div class="col-md-12">
+             <div class="title">
+                 <h2>{{article.title}}</h2>
+             </div>
+          </div>
+       </div>
+    </div>
+ </div>
+ <main role="main" class="container">
+    <div class="row">
+      <div class="col-md-8 blog-main">
+        <div class="blog-post">
+          {%if active_user.root == 1%}
+          <a href="/delete/{{article.id}}" class="btn btn-danger mt-3">Удалить запись</a>
+          {%endif%}
+          <div class="article-wrap d-flex justify-content-between my-5">
+            <div class="images">
+              <img src="../static/images/upload/{{article.image_name}}" class="" width="70%" alt="">
+            </div>
+            <div class="description w-100">
+              <h2 class="blog-post-title">{{article.title}}</h2>
+              <p class="blog-post-meta">{{article.date.strftime('%d.%m.%Y')}}, <a href="/articles?seach={{article.category}}">{{article.category}}</a></p>
+                <div class="main-text my-5">
+                    {% autoescape false %}
+                    {{article.text}}
+                    {% endautoescape %}
+                </div>
+            </div>
+          </div>
+
+          
+        
+        </div><!-- /.blog-post -->
+      </div><!-- /.blog-main -->
+    </div><!-- /.row -->
+  </main>
+{% endblock %}

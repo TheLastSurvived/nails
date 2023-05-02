@@ -1,0 +1,160 @@
+{% extends 'base.html' %}
+{% block title %}
+Цены
+{% endblock %}
+
+{% block main %} 
+
+
+      <div class="back_re">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="title">
+                     <h2>Цены и расписание</h2>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+
+ 
+
+
+      
+
+      <!-- our pricing -->
+      <div  class="pricing slin">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="titlepage">
+                     <h2></h2>
+                  </div>
+               </div>
+            </div>
+
+            {% with messages = get_flashed_messages(True) %}
+            {% if messages %}
+            {% for category, message in messages %}
+            <p class="flash {{category}} my-5 text-center">{{message}}</p>
+            <script>
+               alert("Дата выбрана неправильно, так как этот день уже прошел!");
+            </script>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+
+            <div class="row">
+
+               {%for price in prices%}
+               <div class="col-md-4">
+                  <div class="pricing_box">
+                     <div class="pricing_box_ti">
+                        <h3> {{price.price}} <span> BYN </span><strong></strong></h3>
+                     </div>
+                     <div class="our_pricing">
+                        <span>{{price.title}}</span>
+                        <p></p>
+                     </div>
+                  </div>
+                  <a class="read_more mar_top" data-toggle="modal" data-target="#exampleModal{{price.id}}" href="Javascript:void(0)"> Забронировать</a>
+               </div>
+
+               <div class="modal fade" id="exampleModal{{price.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Выберите дату</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      {%if 'name' in session%}
+                      <div class="modal-body">
+                        <form action="{{ url_for('payment', id=price.id)}}" method="post">
+                           <div class="form-group">
+                              <label for="inputDate">Введите дату:</label>
+                              <input type="date"  id="cal" class="form-control" name="date" required>
+                            </div>
+                            <div class="form-group">
+                              <label for="inputDate">Выберите время:</label>
+                              <select name="time" id="">
+                                 <option value="08:30">08:30</option>
+                                 <option value="09:30">09:30</option>
+                                 <option value="10:30">10:30</option>
+                                 <option value="11:30">11:30</option>
+                                 <option value="12:30">12:30</option>
+                                 <option value="13:30">13:30</option>
+                                 <option value="14:30">14:30</option>
+                                 <option value="15:30">15:30</option>
+                                 <option value="16:30">16:30</option>
+                                 <option value="17:30">17:30</option>
+                              </select>
+                              
+                            </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-dark" data-dismiss="modal">Закрыть</button>
+                        <button type="submit" class="btn btn-primary">Забронировать</button>
+                      </div>
+                     </form>
+                     {%else%}
+                     <div class="modal-body">
+                       
+                        <p class="text-center"> Необходима <a href="/auth">авторизация</a> !</p>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-dark" data-dismiss="modal">Закрыть</button>
+                      </div>
+                     {%endif%}
+                    </div>
+                  </div>
+                </div>
+              {%endfor%}
+              
+            </div>
+         </div>
+      </div>
+      <div class="container p-5">
+         <div id='calendar'></div>
+       </div>
+      <!-- end our pricing -->
+      {% endblock %}
+      {% block script %} 
+      <script>
+          
+
+         document.addEventListener('DOMContentLoaded', function() {
+           var calendarEl = document.getElementById('calendar');
+         
+           var calendar = new FullCalendar.Calendar(calendarEl, {
+             initialView: 'dayGridMonth',
+             locales: 'ru',
+             buttonText: {
+                next: '>',
+                nextYear: '>>',
+                prev: '<',
+                prevYear: '<<',
+                today: 'Теущий месяц'
+            },
+             
+         
+             events: [
+               {%for el in orders%}
+               {
+                  title: 'Занято',
+                 start: '{{el.date}}'
+               },
+               {%endfor%}
+             ]
+           });
+         
+           calendar.render();
+       
+
+           
+         });
+         
+             </script>
+      {% endblock %}

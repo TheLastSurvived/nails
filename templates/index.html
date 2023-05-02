@@ -1,0 +1,217 @@
+
+{% extends 'base.html' %}
+{% block title %}
+Главная
+{% endblock %}
+
+{% block main %} 
+      <section class="banner_main">
+         <div id="myCarousel" class="carousel slide banner1" data-ride="carousel">
+            <ol class="carousel-indicators">
+               <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+               <li data-target="#myCarousel" data-slide-to="1"></li>
+               <li data-target="#myCarousel" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+               <div class="carousel-item active">
+                  <div class="container-fluid">
+                     <div class="carousel-caption relative">
+                        <div class="row d_flex">
+                           <div class="col-md-6">
+                              <img class="bann_img" src="../static/images/banner_ing.jpg" width="80%" alt="#"/>
+                           </div>
+                           <div class="col-md-6">
+                              
+                              <h1>КРАСОТА ДО КОНЧИКОВ ПАЛЬЦЕВ</h1>
+                              <p></p>
+                              <a class="get_btn" href="/pricing" role="button">Записаться</a>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               
+              
+            </div>
+         </div>
+      </section>
+      
+      <!-- end banner -->
+      <!-- what we do  -->
+      <div class="we_do slin">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="titlepage">
+                     <h2>Услуги </h2>
+                  </div>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-lg-10 offset-lg-1 col-md-12">
+                  <div class="row">
+                     <div class="col-md-3 col-sm-6">
+                        <div class="we_box">
+                           <i><img src="../static/images/weicon1.png" alt="#"/></i>
+                           <h3>Дизайн</h3>
+                           <p></p>
+                        </div>
+                     </div>
+                     <div class="col-md-3 col-sm-6">
+                        <div class="we_box">
+                           <i><img src="../static/images/weicon2.png" alt="#"/></i>
+                           <h3>Маникюр</h3>
+                           <p></p>
+                        </div>
+                     </div>
+                     <div class="col-md-3 col-sm-6">
+                        <div class="we_box">
+                           <i><img src="../static/images/weicon3.png" alt="#"/></i>
+                           <h3>Педикюр</h3>
+                           <p></p>
+                        </div>
+                     </div>
+                     <div class="col-md-3 col-sm-6">
+                        <div class="we_box">
+                           <i><img src="../static/images/weicon4.png" alt="#"/></i>
+                           <h3>Уход</h3>
+                           <p></p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- end what we do  -->
+      <!-- about -->
+      <div class="about slin2">
+         <div class="container">
+            <div class="row d_flex">
+               <div class="col-md-6">
+                  <div class="titlepage">
+                     <h2>О нас</h2>
+                     <p>Мы специализируемся на проведении разнообразных процедур, призванных улучшить состояние кожи рук и ногтей. Сегодня посетителю студии маникюра предлагаются такие услуги как: парафинотерапия, массаж рук, уход за кутикулой и ногтевой пластиной при помощи натуральных масел, спа - маникюр и педикюр.</p>
+                    
+                  </div>
+               </div>
+               <div class="col-md-6">
+                  <div class="about_img">
+                     <figure><img src="../static/images/about.jpg" alt="#"/></figure>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- end about -->
+      <!-- our pricing -->
+      <div  class="pricing slin">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="titlepage">
+                     <h2>Цены</h2>
+                  </div>
+               </div>
+            </div>
+            <div class="row">
+               {%for price in prices%}
+               <div class="col-md-4">
+                  <div class="pricing_box">
+                     <div class="pricing_box_ti">
+                        <h3> {{price.price}} <span> BYN </span><strong></strong></h3>
+                     </div>
+                     <div class="our_pricing">
+                        <span>{{price.title}}</span>
+                        <p></p>
+                     </div>
+                  </div>
+                  <a class="read_more mar_top" href="/pricing"> Забронировать</a>
+               </div>
+              {%endfor%}
+            </div>
+         </div>
+      </div>
+      <!-- end our pricing -->
+      <!-- experts -->
+      <div  class="experts slin2">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="titlepage">
+                     <h2>Познакомьтесь с нашими экспертами</h2>
+                  </div>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-lg-8 offset-lg-2 col-md-12">
+                  <div class="row">
+                     <div class="col w-50">
+                        <div id="exp" class="experts_box">
+                           <div class="experts_img">
+                              <figure><img src="../static/images/blog1.jpg" width="50%" alt="#"/></figure>
+                           </div>
+                           <div class="meet">
+                              <h3>Дарья</h3>
+                              <p>                        Дарья- специалист по ногтевому сервису и дизайну. Она занимается ручным, аппаратным и комбинированным маникюром, выравниванием, ремонтом и покрытием ногтей с соблюдением правил асептики и антисептики.
+                              </p>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-md-12">
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- end experts -->
+      <!--  contact -->
+      <div class="contact">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="titlepage">
+                     <h2>Обратная связь</h2>
+                  </div>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-md-6 offset-md-3">
+                  <form id="request" class="main_form" method="post">
+                     <div class="row">
+                        <div class="col-md-12 ">
+                           <input class="contactus" placeholder="Ваше имя" type="type" name="Full Name"> 
+                        </div>
+                        <div class="col-md-12">
+                           <input class="contactus" placeholder="Email " type="type" name="Email "> 
+                        </div>
+                        <div class="col-md-12">
+                           <input class="contactus" placeholder="Номер телефона" type="type" name="Phone Number">                          
+                        </div>
+                        <div class="col-md-12">
+                           <textarea class="textarea" placeholder="Сообщение" type="type" Message="Name"></textarea>
+                        </div>
+                        <div class="col-md-12">
+                           <button class="send_btn">Отправить</button>
+                        </div>
+                     </div>
+                  </form>
+               </div>
+            </div>
+         </div>
+         <div class="container-fluid">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="map_main">
+                     <div class="map-responsive">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2361.7947890264986!2d23.8145331!3d53.7041024!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46e078ba1621be5f%3A0xc26a937527f8e3f3!2z0YPQuy4g0JrRg9GA0YfQsNGC0L7QstCwIDQsINCT0YDQvtC00L3Qvg!5e0!3m2!1sru!2sby!4v1681760280135!5m2!1sru!2sby" width="600" height="450" style="border:0; width: 100%;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- end contact -->
+      {% endblock %}    
+

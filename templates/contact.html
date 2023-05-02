@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block title %}
+Контакты
+{% endblock %}
+
+{% block main %} 
+        <div class="back_re">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="title">
+                      <h2>Контакты</h2>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!--  contact -->
+      <div class="contact">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="titlepage">
+                     <h2>Обратная связь</h2>
+                  </div>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-md-6 offset-md-3">
+                  <form id="request" class="main_form" method="post">
+                     <div class="row">
+                        <div class="col-md-12 ">
+                           <input class="contactus" placeholder="Ваше имя" type="type" name="Full Name"> 
+                        </div>
+                        <div class="col-md-12">
+                           <input class="contactus" placeholder="Email " type="type" name="Email "> 
+                        </div>
+                        <div class="col-md-12">
+                           <input class="contactus" placeholder="Номер телефона" type="type" name="Phone Number">                          
+                        </div>
+                        <div class="col-md-12">
+                           <textarea class="textarea" placeholder="Сообщение" type="type" Message="Name"></textarea>
+                        </div>
+                        <div class="col-md-12">
+                           <button class="send_btn">Отправить</button>
+                        </div>
+                     </div>
+                  </form>
+               </div>
+            </div>
+         </div>
+         <div class="container-fluid">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="map_main">
+                     <div class="map-responsive">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2361.7947890264986!2d23.8145331!3d53.7041024!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46e078ba1621be5f%3A0xc26a937527f8e3f3!2z0YPQuy4g0JrRg9GA0YfQsNGC0L7QstCwIDQsINCT0YDQvtC00L3Qvg!5e0!3m2!1sru!2sby!4v1681760280135!5m2!1sru!2sby" width="600" height="450" style="border:0; width: 100%;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      {% endblock %}

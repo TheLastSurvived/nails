@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block title %}
+Профиль
+{% endblock %}
+
+{% block main %} 
+<div class="back_re">
+    <div class="container">
+       <div class="row">
+          <div class="col-md-12">
+             <div class="title">
+                 <h2>Профиль</h2>
+             </div>
+          </div>
+       </div>
+    </div>
+ </div>
+<div class="contact">
+
+       
+       <div class="row">
+        <div class="col-md-6 offset-md-3">
+           <form id="request" class="main_form" method="post">
+              <div class="row">
+                <div class="col-md-12 text-center my-3">
+                    {% with messages = get_flashed_messages(True) %}
+                    {% if messages %}
+                    {% for category, message in messages %}
+                    <p class="flash {{category}}">{{message}}</p>
+                    {% endfor %}
+                    {% endif %}
+                    {% endwith %}
+                    </div>
+                <div class="col-md-12 ">
+                    <input class="contactus" placeholder="Ваше имя" value="{{active_user.name}}" type="text" name="FullName" required> 
+                 </div>
+                 <div class="col-md-12">
+                    <input class="contactus" placeholder="Email " value="{{active_user.email}}" type="email" name="Email" required> 
+                 </div>
+                 <div class="col-md-12">
+                    <input class="contactus" placeholder="Номер телефона" value="{{active_user.phone_number}}" type="number" name="PhoneNumber" required>                          
+                 </div>
+                 <div class="col-md-12 ">
+                  <input class="contactus" placeholder="Пароль" type="password" name="password" required> 
+               </div>
+                 <div class="col-md-12">
+                    <button type="submit" class="send_btn">Изменить</button>
+                 </div>
+              </div>
+           </form>
+        </div>
+     </div>
+    </div>
+
+ </div>
+{% endblock %}

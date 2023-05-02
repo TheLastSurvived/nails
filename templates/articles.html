@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+{% block title %}
+Обучение
+{% endblock %}
+
+{% block main %} 
+<div class="back_re">
+    <div class="container">
+       <div class="row">
+          <div class="col-md-12">
+             <div class="title">
+                 <h2>Обучение</h2>
+             </div>
+          </div>
+       </div>
+    </div>
+ </div>
+
+<div class="container">
+
+  {%if active_user.root == 1%}
+    <div class="my-3">
+        <div class="row">
+        <div class="col-md-12 text-right">
+            <button class="btn btn-dark" data-toggle="modal" data-target="#exampleModal1">Добавить запись</button>
+            <div class="">
+              {% with messages = get_flashed_messages(True) %}
+              {% if messages %}
+              {% for category, message in messages %}
+              <p class="flash {{category}}">{{message}}</p>
+              {% endfor %}
+              {% endif %}
+              {% endwith %}
+              </div>
+        </div>
+    </div>
+     </div>
+    
+     <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+       <div class="modal-dialog" role="document">
+         <div class="modal-content">
+           <div class="modal-header">
+             <h5 class="modal-title" id="exampleModalLabel">Добавить запись</h5>
+             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+               <span aria-hidden="true">&times;</span>
+             </button>
+           </div>
+           <div class="modal-body">
+            {{ ckeditor.load() }}
+                <form action="" method="post" enctype="multipart/form-data">
+                    <div class="form-group row">
+                      <div class="col-md-6 mb-4 mb-lg-0">
+                        <input type="text" class="form-control" placeholder="Название *" name="title" required>
+                      </div>
+                      <div class="col-md-6">
+                        <input type="text" class="form-control" placeholder="Категория *" name="category" required>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <div class="col-md-12">
+                        <label for="exampleInputEmail1" class="form-label">Изображение записи *</label>
+                        <input type="file" id="exampleInputEmail1" class="form-control" placeholder="" name="image" accept=".jpg,.jpeg,.png" required>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <div class="col">
+                        {{ ckeditor.create() }}
+                      </div>
+                    </div>
+           </div>
+           <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">Добавить запись</button>
+             <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+            </form>
+           </div>
+         </div>
+       </div>
+     </div>
+     {%endif%}
+     <div class="d-flex">
+     <div class="album py-5 w-75">
+        <div class="container">
+          <div class="row ">
+
+            {%if articles%}
+            {%for el in articles%}
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+                <img class="card-img-top"  src="../static/images/upload/{{el.image_name}}" data-holder-rendered="true">
+                <div class="card-body">
+                  <p class="card-text">{{el.title}}</p>
+                  <small class="text-muted">{{el.category}} </small>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <a href="/article/{{el.id}}" class="btn btn-sm btn-outline-secondary">Просмотр</a>
+                    </div>
+                    <small class="text-muted">{{el.date.strftime('%d.%m.%Y')}} </small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {%endfor%}
+            {%else%}
+                <h1>Записей нет!</h1>
+            {%endif%}
+          
+
+          </div>
+        </div>
+      </div>
+  
+      <div class="sidebar py-5">
+        <h2>Сортировка по категориям:</h2>
+        {% for el in category %}
+        <li><a href="/articles?seach={{el.category}}">{{el.category}}</a></li>
+           {%endfor%} 
+      </div>
+       
+      </div>
+     
+</div>
+{% endblock %}
