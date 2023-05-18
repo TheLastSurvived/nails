@@ -42,9 +42,9 @@
       <!-- header -->
       <header>
          <!-- header inner -->
-         <div class="header">
-            <div class="container-fluid">
-               <div class="row">
+         <div class="header" style="background-color: #2e2d2d;">
+            <div class="container-fluid ">
+               <div class="row ">
                   <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
                      <div class="full">
                         <div class="center-desk">
@@ -54,24 +54,24 @@
                         </div>
                      </div>
                   </div>
-                  <div class="col-xl-7 col-lg-7 col-md-9 col-sm-9">
+                  <div class="col-xl-7 col-lg-7 col-md-9 col-sm-9 ">
                      <nav class="navigation navbar navbar-expand-md navbar-dark ">
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                         </button>
-                        <div class="collapse navbar-collapse" id="navbarsExample04">
+                        <div class="collapse navbar-collapse " id="navbarsExample04">
                            <ul class="navbar-nav mr-auto">
                               <li class="nav-item">
-                                 <a class="nav-link" href="/">Главная</a>
+                                 <a class="nav-link link-wrap" href="/">Главная</a>
                               </li>
                               <li class="nav-item">
-                                <a class="nav-link" href="/gallery">Галерея</a>
+                                <a class="nav-link link-wrap" href="/gallery">Галерея</a>
                              </li>
                              <li class="nav-item">
-                                <a class="nav-link" href="/articles">Обучение</a>
+                                <a class="nav-link link-wrap" href="/articles">Обучение</a>
                              </li>
                              <li class="nav-item">
-                              <a class="nav-link" href="/pricing">Цены и расписание</a>
+                              <a class="nav-link link-wrap" href="/pricing">Цены и расписание</a>
                            </li>
                          
                             
@@ -79,26 +79,26 @@
 
                              {% if active_user.root==1 %}
                              <li class="nav-item">
-                              <a class="nav-link" href="/admin">Список заказов</a>
+                              <a class="nav-link link-wrap" href="/admin">Список заказов</a>
                            </li>
                            {%else%}
                            <li class="nav-item">
-                              <a class="nav-link" href="/servises-list">Мои заказы</a>
+                              <a class="nav-link link-wrap" href="/servises-list">Мои заказы</a>
                            </li>
                            {% endif %}
                              <li class="nav-item">
-                                <a class="nav-link" href="/profile/{{active_user.id}}">Профиль</a>
+                                <a class="nav-link link-wrap" href="/profile/{{active_user.id}}">Профиль</a>
                              </li>
                              <li class="nav-item">
-                                <a class="nav-link" href="/logout">Выйти</a>
+                                <a class="nav-link link-wrap" href="/logout">Выйти</a>
                              </li>
                              
                              {% else %}
                              <li class="nav-item">
-                                <a class="nav-link" href="/reg">Регистрация</a>
+                                <a class="nav-link link-wrap" href="/reg">Регистрация</a>
                              </li>
-                             <li class="nav-item">
-                                <a class="nav-link" href="/auth">Авторизация</a>
+                             <li class="nav-item link-wrap">
+                                <a class="nav-link " href="/auth">Авторизация</a>
                              </li>
                              {% endif %}
                            </ul>
