@@ -1,8 +1,13 @@
 {% extends 'base.html' %}
 {% block title %}
 {{article.title}}
-{% endblock %}
 
+{% endblock %}
+<style>
+  img{
+    margin:  0 auto;
+  }
+</style>
 {% block main %} 
 <div class="back_re">
     <div class="container">
@@ -23,13 +28,17 @@
           <a href="/delete/{{article.id}}" class="btn btn-danger mt-3">Удалить запись</a>
           {%endif%}
           <div class="article-wrap my-5">
-            <div class="images">
-              <img src="../static/images/upload/{{article.image_name}}" class="" width="50%" alt="">
-            </div>
+            
             <div class="description w-100 mt-3">
+              <div class="mb-3">
               <h2 class="blog-post-title">{{article.title}}</h2>
+              
               <p class="blog-post-meta">{{article.date.strftime('%d.%m.%Y')}}, <a href="/articles?seach={{article.category}}">{{article.category}}</a></p>
-                <div class="main-text">
+              <div class="images">
+                <img src="../static/images/upload/{{article.image_name}}" class="" width="50%" alt="">
+              </div> 
+            </div>
+              <div class="main-text">
                     {% autoescape false %}
                     {{article.text}}
                     {% endautoescape %}
